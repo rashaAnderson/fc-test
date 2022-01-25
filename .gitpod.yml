@@ -1,0 +1,20 @@
+image: gitpod/workspace-full
+
+tasks:
+  - name: Terminal # Terminal for applicant to use
+  - name: Docker # Show Docker output
+    before: export LARAVEL_URL=$(gp url 8055) # So React can find Laravel in Gitpod
+    init: make build && docker-compose up --no-start --build # Do heavy lifting here
+    command: make up # Start containers
+    openMode: split-right
+    
+ports:
+  - port: 4312 # MySQL
+    onOpen: ignore
+  - port: 5530 # private-api: Nest.js
+    onOpen: ignore
+  - port: 7755 # web-ui: React
+    onOpen: open-preview
+  - port: 8055 # public-api: Laravel
+    onOpen: ignore
+    visibility: public # Needs to be public so React can reach it
