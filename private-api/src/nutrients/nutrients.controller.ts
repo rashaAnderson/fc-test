@@ -12,7 +12,7 @@ import { NutrientsService } from './nutrients.service';
 import { CreateNutrientDto } from './dto/create-nutrient.dto';
 import { UpdateNutrientDto } from './dto/update-nutrient.dto';
 
-@Controller('nutrients')
+@Controller('nutrientsDetails')
 export class NutrientsController {
   constructor(private readonly nutrientsService: NutrientsService) {}
 

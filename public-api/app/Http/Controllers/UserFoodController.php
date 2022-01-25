@@ -13,24 +13,38 @@ class UserFoodController extends Controller
     public function __construct()
     {
         $this->privateApiUrl = env('PRIVATE_API_URL');
+        $this->errorMesage = 'Internal Error, please try again later';
+        $this->genericErrorStatusCode = 500;
     }
 
     public function foods(int $userId)
     {
         $response = Http::get("{$this->privateApiUrl}/users/{$userId}/foods");
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 
     public function food(int $userId, int $foodId)
     {
         $response = Http::get("{$this->privateApiUrl}/users/{$userId}/foods/{$foodId}");
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 
     public function deleteFood(int $userId, int $foodId)
     {
         $response = Http::delete("{$this->privateApiUrl}/users/{$userId}/foods/{$foodId}");
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 
     public function addFood(Request $request, int $userId, int $foodId)
@@ -40,6 +54,10 @@ class UserFoodController extends Controller
         $response = Http::put("{$this->privateApiUrl}/users/{$userId}/foods/{$foodId}", [
             'servingsPerWeek' => $servingsPerWeek
         ]);
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 }

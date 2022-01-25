@@ -5,11 +5,12 @@ import '../less/global.less';
 
 export default class Users extends React.Component {
   state = {
-    users: []
+    users: [],
+    userFoods: []
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_PUBLIC_API_URL}/users`)
+    axios.get(`${process.env.REACT_APP_PUBLIC_API_URL}/users/`)
       .then(res => {
         const users = res.data;
         this.setState({users});
@@ -28,7 +29,7 @@ export default class Users extends React.Component {
             {this.state.users.map(user => 
               <tr key={user.id}>
                 <td>{user.id}</td>
-                <td>{user.name}</td>
+                <td><a href={`/users/${user.id}/reports/most-consumed-nutrient`}>{user.name}</a></td>
                 <td>{user.email}</td>
                 <td><a href={`/users/${user.id}`}>Edit</a></td>
               </tr>)}

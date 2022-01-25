@@ -13,6 +13,8 @@ class FoodController extends Controller
     public function __construct()
     {
         $this->privateApiUrl = env('PRIVATE_API_URL');
+        $this->errorMesage = 'Internal Error, please try again later';
+        $this->genericErrorStatusCode = 500;
     }
 
     public function index(Request $request)
@@ -22,12 +24,20 @@ class FoodController extends Controller
         $response = Http::get("{$this->privateApiUrl}/foods", [
             'search' => $search
          ]);
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 
     public function show(int $foodId)
     {
         $response = Http::get("{$this->privateApiUrl}/foods/{$foodId}");
-        return $response->json();
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response($this->errorMesage, $this->genericErrorStatusCode);
+        }
     }
 }

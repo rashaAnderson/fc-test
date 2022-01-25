@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { FoodsModule } from './foods/foods.module';
 import { NutrientsModule } from './nutrients/nutrients.module';
 import { UserFoodsModule } from './user-foods/user-foods.module';
+import { FoodNutrientModule } from './food-nutrients/food-nutrient.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UserFoodsModule } from './user-foods/user-foods.module';
     UserFoodsModule,
     FoodsModule,
     NutrientsModule,
+    FoodNutrientModule
   ],
   controllers: [AppController],
   providers: [AppService],

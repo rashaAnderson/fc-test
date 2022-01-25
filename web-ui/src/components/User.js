@@ -71,6 +71,7 @@ export default class Users extends React.Component {
         <p>ID: {this.state.user.id}</p>
         <p>Name: {this.state.user.name}</p>
         <p>Email: {this.state.user.email}</p>
+        <p>{this.state.userFoods.id}</p>
 
         <SearchDropdown
           inputId='food-search'
@@ -96,6 +97,7 @@ export default class Users extends React.Component {
                 <td>{userFood.food.publicationDate}</td>
                 <td>{userFood.servingsPerWeek ?? 0}</td>
                 <td><button onClick={() => this.removeFood(userFood.food.id)}>Remove</button></td>
+
               </tr>)}
           </tbody>
         </table>

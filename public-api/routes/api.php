@@ -31,3 +31,8 @@ Route::delete('/users/{userId}/foods/{foodId}', ['uses' => 'UserFoodController@d
 
 Route::get('/foods', ['uses' => 'FoodController@index']);
 Route::get('/foods/{foodId}', ['uses' => 'FoodController@show']);
+
+Route::get('/foodNutrients/{foodId}', ['uses' => 'FoodNutrientController@show']);
+Route::get('/foodNutrients/', ['uses' => 'FoodNutrientController@index']);
+
+Route::get('/nutrientsDetails/{id}', ['uses' => 'NutrientsController@show']);

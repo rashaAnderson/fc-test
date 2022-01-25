@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class ApiController extends Controller
+class NutrientsController extends Controller
 {
     private $privateApiUrl;
 
@@ -15,18 +17,15 @@ class ApiController extends Controller
         $this->genericErrorStatusCode = 500;
     }
 
-    public function index()
+    public function show(int $id)
     {
-        return response('Hello foody!', 200);
-    }
-
-    public function healthcheck()
-    {
-        $response = Http::get("{$this->privateApiUrl}/healthcheck");
+        $response = Http::get("{$this->privateApiUrl}/nutrientsDetails/{$id}");
         if ($response->ok()) {
-            return response('ok', 200);
+            return $response->json();
         } else {
             return response($this->errorMesage, $this->genericErrorStatusCode);
         }
     }
+
+
 }
