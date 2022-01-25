@@ -1,18 +1,18 @@
 import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Put,
-    Param,
-    Delete,
-    Query,
-    HttpCode,
-  } from '@nestjs/common';
-  import { FoodNutrientService } from './food-nutrient.service';
-  import { PaginationHelper } from '../../libs/pagination-helper';
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+  Query,
+  HttpCode,
+} from '@nestjs/common';
+import { FoodNutrientService } from './food-nutrient.service';
+import { PaginationHelper } from '../../libs/pagination-helper';
 
-  @Controller('foodNutrients')
+@Controller('foodNutrients')
 export class FoodNutrientController {
   constructor(private readonly foodNutrientService: FoodNutrientService) {}
 
@@ -21,8 +21,6 @@ export class FoodNutrientController {
     const { skip, take } = PaginationHelper.getSkipTake(page, limit);
     return this.foodNutrientService.findAll(skip, take);
   }
-
-
 
   @Get(':foodId')
   findFoods(
@@ -34,5 +32,3 @@ export class FoodNutrientController {
     return this.foodNutrientService.findFoods(foodId, skip, take);
   }
 }
-
-

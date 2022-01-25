@@ -17,7 +17,6 @@ export class FoodNutrientService {
     });
   }
 
-
   findFoods(foodId: number, skip = 0, take = 25) {
     return this.foodNutrientRepository.find({
       where: { foodId },

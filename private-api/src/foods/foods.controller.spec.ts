@@ -31,7 +31,7 @@ describe('FoodsController', () => {
       ],
     }).compile();
 
-    controller =  module.get<FoodsController>(FoodsController);
+    controller = module.get<FoodsController>(FoodsController);
   });
 
   it('should be defined', () => {
@@ -43,7 +43,7 @@ describe('FoodsController', () => {
   });
 
   it('should execute findAll function', () => {
-    expect(controller.findAll("search",1,25)).toBeDefined();
+    expect(controller.findAll('search', 1, 25)).toBeDefined();
   });
 
   it('should execute create function', () => {
@@ -59,5 +59,4 @@ describe('FoodsController', () => {
   it('should execute remove function', () => {
     expect(controller.remove(1)).toBeDefined();
   });
-
 });

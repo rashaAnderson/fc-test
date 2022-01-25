@@ -15,7 +15,7 @@ import { FoodNutrientModule } from './food-nutrients/food-nutrient.module';
     UserFoodsModule,
     FoodsModule,
     NutrientsModule,
-    FoodNutrientModule
+    FoodNutrientModule,
   ],
   controllers: [AppController],
   providers: [AppService],
